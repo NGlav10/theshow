@@ -8,7 +8,7 @@ export async function fetchPlayerData(isMock: boolean) {
     } else {
         try {
             const response = await fetch(
-                `${API_URL_PREFIX}listings.json?type=stadium&page=1`
+                'https://cors-anywhere.herokuapp.com/https://mlb21.theshow.com/apis/listings.json'
             )
             return response.json()
         } catch (error) {
