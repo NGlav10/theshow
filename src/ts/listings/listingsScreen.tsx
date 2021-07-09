@@ -5,7 +5,7 @@ import PlayerTile from './components/PlayerTile'
 import type { Page, Listing } from './ListingsTypeDefinitions'
 import { sortPlayers } from './listingsUtils'
 
-export default function Board() {
+function ListingsScreen() {
     const [listings, setListings] = useState<Listing[]>([])
 
     useEffect(() => {
@@ -18,11 +18,14 @@ export default function Board() {
         const sortedPlayers = listings.sort(sortPlayers)
         console.log(sortedPlayers)
         return (
-            <>
+            <div>
+                <h1>The Show 21: Community Market</h1>
                 {listings.sort(sortPlayers).map((listing: Listing) => (
                     <PlayerTile listing={listing} />
                 ))}
-            </>
+            </div>
         )
     }
 }
+
+export default ListingsScreen

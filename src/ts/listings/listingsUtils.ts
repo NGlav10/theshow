@@ -10,3 +10,5 @@ export const getTakeHomeAmt = (player: Listing): number => {
     const takeHomeAmt =  sellPrice - player.best_buy_price
     return  takeHomeAmt
 }
+
+export const formatStubbs = (stubbs: number) => stubbs.toFixed().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
