@@ -1,8 +1,18 @@
-import React from 'react'
-import Listings from './listings/listingsScreen'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import ListingScreen from './listingScreen'
+import ListingsScreen from './listingsScreen'
 
-const App = () => {
-    return <Listings />
+function App() {
+    return (
+        <Router>
+            <Route exact path="/">
+                <ListingsScreen />
+            </Route>
+            <Route>
+                <ListingScreen />
+            </Route>
+        </Router>
+    )
 }
 
 export default App

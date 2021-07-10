@@ -9,10 +9,12 @@ export type Listing = {
     listing_name: string
     best_sell_price: number
     best_buy_price: number
-    item: Player
+    item: Item
+    price_history: PriceHistory[]
+    completed_orders: CompletedOrder[]
 }
 
-export type Player = {
+export type Item = {
     uuid: string
     type: string
     img: string
@@ -25,4 +27,15 @@ export type Player = {
     series_texture_name: string
     series_year: number
     display_position: string
+}
+
+export type PriceHistory = {
+    date: string
+    best_buy_price: number
+    best_sell_price: number
+}
+
+export type CompletedOrder = {
+    date: string
+    price: string
 }

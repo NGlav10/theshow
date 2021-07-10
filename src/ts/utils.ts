@@ -1,4 +1,4 @@
-import type {Listing} from './ListingsTypeDefinitions'
+import type {Listing} from './TypeDefinitions'
 
 export const sortPlayers = (player1: Listing, player2: Listing): number => {
     return getTakeHomeAmt(player2) - getTakeHomeAmt(player1)
