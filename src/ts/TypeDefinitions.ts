@@ -10,8 +10,8 @@ export type Listing = {
     best_sell_price: number
     best_buy_price: number
     item: Item
-    price_history: PriceHistory[]
-    completed_orders: CompletedOrder[]
+    price_history?: PriceHistory[]
+    completed_orders?: CompletedOrder[]
 }
 
 export type Item = {
@@ -38,4 +38,18 @@ export type PriceHistory = {
 export type CompletedOrder = {
     date: string
     price: string
+}
+
+export type ListingParams = {
+    uuid: string
+}
+
+export type StyleSheet = {
+    [key: string]: React.CSSProperties
+}
+
+export type ListingHistory = {
+    avg: number
+    high: number
+    low: number
 }

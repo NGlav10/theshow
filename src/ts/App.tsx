@@ -8,7 +8,7 @@ function App() {
             <Route exact path="/">
                 <ListingsScreen />
             </Route>
-            <Route>
+            <Route exact path="/listing/:uuid">
                 <ListingScreen />
             </Route>
         </Router>

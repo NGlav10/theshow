@@ -1,8 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import STUBBS_IMG from '../../images/stub-icon.png'
-import type { Listing } from '../TypeDefinitions'
-import { formatStubbs, getTakeHomeAmt } from '../utils'
+import { chevron, stubIcon } from '../../images'
+import '../styleGuide.css'
+import type { Listing, StyleSheet } from '../TypeDefinitions'
+import { formatStubs, getTakeHomeAmt } from '../utils'
 
 type Props = {
     listing: Listing
@@ -13,31 +14,36 @@ const ListingTile = (props: Props) => {
     const history = useHistory()
 
     return (
-        <div style={styles.tile} onClick={() => history.push('/listing')}>
+        <div
+            style={styles.tile}
+            onClick={() => history.push(`/listing/${listing.item.uuid}`)}
+        >
             <img src={listing.item.img} alt="Card" style={styles.image} />
             <div>
                 <h2>
                     {listing.item.ovr} {listing.item.name}
                 </h2>
                 <div style={styles.divRow}>
-                    <h4>
-                        {`Sell for: ${formatStubbs(listing.best_sell_price)}`}
-                    </h4>
-                    <img src={STUBBS_IMG} alt="stub" style={styles.stubImg} />
+                    <p>{`Sell for: ${formatStubs(listing.best_sell_price)}`}</p>
+                    <img src={stubIcon} alt="stub" style={styles.stubImg} />
                 </div>
                 <div style={styles.divRow}>
-                    <h4>
-                        {`Buy for: ${formatStubbs(listing.best_buy_price)}`}
-                    </h4>
-                    <img src={STUBBS_IMG} alt="stub" style={styles.stubImg} />
+                    <p>{`Buy for: ${formatStubs(listing.best_buy_price)}`}</p>
+                    <img src={stubIcon} alt="stub" style={styles.stubImg} />
                 </div>
                 <div style={styles.divRow}>
-                    <h3>
-                        {`Take Home: ${formatStubbs(getTakeHomeAmt(listing))}`}
-                    </h3>
-                    <img src={STUBBS_IMG} alt="stub" style={styles.stubImg} />
+                    <p>
+                        {`Take Home: ${formatStubs(getTakeHomeAmt(listing))}`}
+                    </p>
+                    <img src={stubIcon} alt="stub" style={styles.stubImg} />
                 </div>
             </div>
+            <div style={{ flex: 1 }} />
+            <img
+                src={chevron}
+                alt="Chevron"
+                style={{ width: 'auto', maxHeight: 25 }}
+            />
         </div>
     )
 }
@@ -50,22 +56,24 @@ const styles: StyleSheet = {
     tile: {
         flexDirection: 'row',
         display: 'flex',
-        paddingBottom: 10,
-        border: 10,
+        padding: 15,
+        margin: 10,
+        borderRadius: 15,
+        border: '1px solid rgba(0, 0, 0, 0.05)',
+        boxShadow: '1px 3px 1px rgba(0, 0, 0, 0.08)',
+        alignItems: 'center',
     },
     image: {
-        paddingRight: 10,
+        marginRight: 10,
+        maxWidth: 125,
+        height: 'auto',
     },
     divRow: {
         display: 'flex',
         flexDirection: 'row',
-        height: 50,
+        // height: 50,
         alignItems: 'center',
     },
-}
-
-interface StyleSheet {
-    [key: string]: React.CSSProperties
 }
 
 export default ListingTile

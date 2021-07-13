@@ -1,3 +1,4 @@
-import ListingTile from "./ListingTile"
+import ListingTile from './ListingTile'
+import Modal from './Modal'
 
-export { ListingTile }
+export { ListingTile, Modal }
